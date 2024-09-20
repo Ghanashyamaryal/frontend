@@ -1,0 +1,47 @@
+
+.gradient-bg {
+    background: linear-gradient(to right, #6e06b2,#720bb2,#a94caf,#d27b98,#99347c,#77096c); /* Replace with the exact gradient from your image */
+}
+
+
+.left-section {
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+
+.register-button {
+    display: block;
+    margin-left: auto;
+    background-color: black;
+    color: white; 
+    width: auto; 
+    max-width: calc(100% + 20px); 
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #333;
+}
+.register-button:hover {
+    background-color: #333; 
+}

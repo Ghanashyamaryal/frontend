@@ -1,0 +1,113 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 98.5vw;
+    height: 80vh;
+    animation: zoomFade 12s infinite;
+    margin-left: 1px;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+}
+
+.heading {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.paragraph {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    background-color: #f97316;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #ea580c;
+}
+
+@keyframes zoomFade {
+    0% {
+        background-image: url('https://nepalliontrekking.com/wp-content/uploads/2017/03/pokhara-e1477299796656-1140x530-1.jpg');
+        opacity: 1;
+        transform: scale(1);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    21% {
+        background-image: url('https://e0.pxfuel.com/wallpapers/452/223/desktop-wallpaper-mount-everest-mural-everest-mountain.jpg');
+        opacity: 1;
+        transform: scale(1);
+    }
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    41% {
+        background-image: url('https://assets-cdn.kathmandupost.com/uploads/source/news/2023/third-party/2-1683857290.jpg');
+        opacity: 1;
+        transform: scale(1);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    61% {
+        background-image: url('https://blonholiday.wordpress.com/wp-content/uploads/2017/05/krishna-mandir-krishna-temple-in-patan-durbar-square.jpg?w=1600&h=768&crop=1');
+        opacity: 1;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    81% {
+        background-image: url('https://photographylife.com/wp-content/uploads/2015/08/DSC0577.jpg');
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

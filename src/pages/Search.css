@@ -1,0 +1,76 @@
+/* Search.css */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 50px;
+    background: linear-gradient(to right, rgb(134, 161, 195), rgb(243, 189, 243), rgb(205, 151, 192)); /* Gradient ring */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: 2px; /* Adjust as needed to fit the gradient border */
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #ffffff; /* Inner background color */
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2; /* Ensure form is above gradient border */
+    padding: 5px;
+    border-radius: 45px;
+    background: #ffffff; /* Form background color to match container */
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d1d0d0;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    color: #333232;
+    font-size: 16px;
+}
+
+.search-input {
+    border: none;
+    border-radius: 20px;
+    padding: 8px 10px;
+    font-size: 14px;
+    color: #333333;
+    background-color: #faf7f7;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+    height: 28px;
+}
+
+.search-input::placeholder {
+    color: #999999;
+}
+
+.search-input:focus {
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 12px rgba(150, 150, 150, 0.3);
+    color: #000000;
+}

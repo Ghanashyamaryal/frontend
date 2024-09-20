@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Kathmandu",
+        "location": "Bagmati Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 0 km",
+        "description": "The capital city of Nepal, Kathmandu is a cultural hub with a rich history, ancient temples, and bustling markets. It serves as a gateway to exploring Nepal's diverse landscapes and traditions.",
+        "image": "https://media.istockphoto.com/id/637269828/photo/patan.webp?a=1&b=1&s=612x612&w=0&k=20&c=J-FKZVV3qGgw4IBLFaJ0a0rQHJJjlIIZg2TlEfwdeMA="
+    },
+    {
+        "name": "Pokhara",
+        "location": "Gandaki Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 200 km",
+        "description": "Pokhara is a picturesque city known for its stunning lakes, panoramic views of the Annapurna range, and adventure sports. It is a popular destination for trekking, paragliding, and relaxation by the lakeside.",
+        "image": "https://media.istockphoto.com/id/532348030/photo/twilight-with-boats-on-phewa-lake-pokhara-nepal.webp?a=1&b=1&s=612x612&w=0&k=20&c=y5i139ubF0vN4kCP1TeEEj8uRxwEvoX5xTamJF5uDy4="
+    },
+    {
+        "name": "Nagarkot",
+        "location": "Bagmati Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 32 km",
+        "description": "Nagarkot is a hill station renowned for its breathtaking sunrise and sunset views over the Himalayas, including Mount Everest. It is a peaceful retreat just a short drive from Kathmandu.",
+        "image": "https://media.istockphoto.com/id/514615431/photo/dawn-in-the-himalaya.webp?a=1&b=1&s=612x612&w=0&k=20&c=YzULxv6sXupnbg8015I30oz2fJJhWStSkdIjTMVDXg4="
+    },
+    {
+        "name": "Ilam Chiya Bagan",
+        "location": "Province No. 1, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 600 km",
+        "description": "Ilam is famous for its lush tea gardens that stretch across rolling hills. It is a serene destination known for its natural beauty, tea plantations, and vibrant cultural heritage.",
+        "image": "https://images.unsplash.com/photo-1602102488252-c4c3daadf1c2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aWxhbXxlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "name": "Mustang",
+        "location": "Gandaki Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 380 km",
+        "description": "Mustang, also known as the 'Forbidden Kingdom,' is a remote and culturally rich region in the Himalayas. It is famous for its unique landscapes, ancient monasteries, and Tibetan-influenced culture.",
+        "image": "https://images.unsplash.com/photo-1609779454436-3797898afe5c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bXVzdGFuZ3xlbnwwfHwwfHx8MA%3D%3D"
+    },
+    {
+        "name": "Mount Everest",
+        "location": "Solukhumbu District, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 160 km (by air)",
+        "description": "Mount Everest, the highest peak in the world, attracts climbers and trekkers from around the globe. The Everest Base Camp trek is one of the most popular trekking routes, offering stunning views and a challenging adventure.",
+        "image": "https://media.istockphoto.com/id/172699850/photo/climbing-everest.webp?a=1&b=1&s=612x612&w=0&k=20&c=s5kd-OXe8i0CSAYS0Ki1z0goJ-Mn1HbeGQfn8HnIemc="
+    },
+    {
+        "name": "Lumbini",
+        "location": "Lumbini Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 265 km",
+        "description": "Lumbini is the birthplace of Lord Buddha and a UNESCO World Heritage Site. It is a significant pilgrimage site with ancient temples, monasteries, and the sacred Lumbini Garden.",
+        "image": "https://media.istockphoto.com/id/503802083/photo/maya-devi-temple-in-lumbini.jpg?s=612x612&w=0&k=20&c=q1LbH1Rkb9TNGZgN9zOcAmTsyXSbFqpXn5FqDVYvaVs="
+    },
+    {
+        "name": "Chitwan National Park",
+        "location": "Bagmati Province, Nepal",
+        "distance_from_kathmandu": "Distance from Kathmandu: 160 km",
+        "description": "Chitwan National Park is a UNESCO World Heritage Site and one of the best places for wildlife safaris in Asia. It is home to endangered species like the one-horned rhinoceros and Bengal tiger.",
+        "image": "https://media.istockphoto.com/id/175182468/photo/great-indian-rhinoceros-in-nepal.webp?a=1&b=1&s=612x612&w=0&k=20&c=mDKT1wJAAHvnNkR6dMgLJpIYXwWJ7wqbxwnp5ahAZxc="
+    }
+]

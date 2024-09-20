@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Everest Base Camp Trek",
+        "location": "Solukhumbu District, Nepal",
+        "distance_from_kathmandu": "138 km (by air to Lukla)",
+        "description": "The Everest Base Camp Trek is one of the most famous trekking routes in the world, offering breathtaking views of Mount Everest and a chance to experience Sherpa culture.",
+        "image": "https://media.istockphoto.com/id/474395838/photo/tents-in-everest-base-camp-nepal-himalayas.jpg?s=612x612&w=0&k=20&c=9n-NfAMayvFHIWAMGr9Yc-_q8ijTR9gs9du7jjIl408="
+    },
+    {
+        "name": "Helambu Trek",
+        "location": "Helambu Region, Nepal",
+        "distance_from_kathmandu": "72 km",
+        "description": "The Helambu Trek is a short and easy trek close to Kathmandu, ideal for those looking to experience the beauty of the Himalayas without venturing too far. It offers rich cultural experiences and views of the Langtang range.",
+        "image": "https://media.istockphoto.com/id/1300090239/photo/village-in-the-mountains-in-the-valley-of-the-helambu-sindhupalchowk-nepal.jpg?s=612x612&w=0&k=20&c=v46mXfIDDPkRtGZPiZoFfIxYxrB28xqyXD9GWjOLD94="
+    },
+    {
+        "name": "Pach Pokhari",
+        "location": "Sindhupalchok, Nepal",
+        "distance_from_kathmandu": "5.1 km (to Nayapul)",
+        "description": "The Khopra Danda Trek is a less crowded alternative to the popular treks in the Annapurna region, offering panoramic views of the Annapurna and Dhaulagiri ranges. The trek passes through picturesque villages and rhododendron forests.",
+        "image": "https://omgnepal.com/wp-content/uploads/2020/08/Panchpokhari-Nepal-3.jpg"
+    },
+    {
+        "name": "Upper Mustang Trek",
+        "location": "Mustang District, Nepal",
+        "distance_from_kathmandu": "380 km (to Jomsom)",
+        "description": "The Upper Mustang Trek takes you through the remote and ancient kingdom of Mustang, with its unique Tibetan culture, arid landscapes, and dramatic mountain views. It is a restricted area, requiring a special permit.",
+        "image": "https://media.istockphoto.com/id/519457671/photo/man-hiker-with-arms-raised-annapurna-trek-nepal.jpg?s=612x612&w=0&k=20&c=t2mjC6JGeg5r8iwg9m_d-5vw-FS-lApiJQjJT4dy3WE="
+    },
+    {
+        "name": "Annapurna Circuit Trek",
+        "location": "Annapurna Region, Nepal",
+        "distance_from_kathmandu": "200 km (to Besisahar)",
+        "description": "The Annapurna Circuit Trek is renowned for its diverse landscapes, ranging from subtropical forests to alpine deserts. The trek offers stunning views of the Annapurna range and passes through various cultural villages.",
+        "image": "https://media.istockphoto.com/id/599993156/photo/at-the-top-of-the-world.jpg?s=612x612&w=0&k=20&c=6uoj24aMuVI4X0bSj6z4dIrDCh4W20srzw3SAj_CMek="
+    },
+    {
+        "name": "Langtang Valley Trek",
+        "location": "Langtang National Park, Nepal",
+        "distance_from_kathmandu": "120 km",
+        "description": "The Langtang Valley Trek is known for its beautiful valley, rich Tamang culture, and proximity to Kathmandu. It offers a quieter trekking experience with stunning views of the Langtang Himalayas.",
+        "image": "https://media.istockphoto.com/id/486540310/photo/langtang-to-ganesh-himal-with-stupa-and-prayer-flags.jpg?s=612x612&w=0&k=20&c=MiFgi67PBsrmntZiWFMEsjca_ts971FRJFp2k4Xrtiw="
+    },
+    {
+        "name": "Manaslu Circuit Trek",
+        "location": "Manaslu Region, Nepal",
+        "distance_from_kathmandu": "140 km (to Soti Khola)",
+        "description": "The Manaslu Circuit Trek is a challenging and remote trek around the eighth highest mountain in the world, Mount Manaslu. It offers a combination of cultural and natural beauty, with fewer trekkers compared to other popular routes.",
+        "image": "https://media.istockphoto.com/id/1249147517/photo/woman-trekker-standing-on-trail-to-manaslu-base-camp-in-samagaun-village-surrounded-by.jpg?s=612x612&w=0&k=20&c=aPImjmRkzs0QjNyIJKwgk2TfxqntDn07_TY90KGsWWw="
+    },
+    {
+        "name": "Ghorepani Poon Hill Trek",
+        "location": "Annapurna Region, Nepal",
+        "distance_from_kathmandu": "200 km (to Nayapul)",
+        "description": "The Ghorepani Poon Hill Trek is a short and easy trek in the Annapurna region, famous for its sunrise view over the Annapurna and Dhaulagiri mountain ranges. It's a popular choice for beginners.",
+        "image": "https://media.istockphoto.com/id/1475564117/photo/view-of-footway-and-countryside-in-annapurna-base-camp-trek-with-annapurna-mountain-range-at.jpg?s=612x612&w=0&k=20&c=6lXNx7qo2dmpHT2prKNPvWjBcR_0b9PBvXyWaa-tDAw="
+    },
+    {
+        "name": "Mardi Himal Trek",
+        "location": "Annapurna Region, Nepal",
+        "distance_from_kathmandu": "200 km (to Kande)",
+        "description": "The Mardi Himal Trek is a hidden gem in the Annapurna region, offering stunning views of Mardi Himal, Machhapuchhre, and the Annapurna range. The trek is known for its off-the-beaten-path experience and diverse landscapes.",
+        "image": "https://media.istockphoto.com/id/2153158119/photo/beautiful-view-at-mardi-himal-base-camp-in-the-annapurna-region-of-nepal.jpg?s=612x612&w=0&k=20&c=rm6EXrhk_YR8jSmCV-5cYrlIoAFriNSWm_MjoNfJIFA="
+    },
+    {
+        "name": "Upper Mustang Trek",
+        "location": "Mustang District, Nepal",
+        "distance_from_kathmandu": "380 km (to Jomsom)",
+        "description": "The Upper Mustang Trek takes you through the remote and ancient kingdom of Mustang, with its unique Tibetan culture, arid landscapes, and dramatic mountain views. It is a restricted area, requiring a special permit.",
+        "image": "https://media.istockphoto.com/id/519457671/photo/man-hiker-with-arms-raised-annapurna-trek-nepal.jpg?s=612x612&w=0&k=20&c=t2mjC6JGeg5r8iwg9m_d-5vw-FS-lApiJQjJT4dy3WE="
+    },
+    {
+        "name": "Helambu Trek",
+        "location": "Helambu Region, Nepal",
+        "distance_from_kathmandu": "72 km",
+        "description": "The Helambu Trek is a short and easy trek close to Kathmandu, ideal for those looking to experience the beauty of the Himalayas without venturing too far. It offers rich cultural experiences and views of the Langtang range.",
+        "image": "https://media.istockphoto.com/id/1300090239/photo/village-in-the-mountains-in-the-valley-of-the-helambu-sindhupalchowk-nepal.jpg?s=612x612&w=0&k=20&c=v46mXfIDDPkRtGZPiZoFfIxYxrB28xqyXD9GWjOLD94="
+    },
+    {
+        "name": "Pach Pokhari",
+        "location": "Sindhupalchok, Nepal",
+        "distance_from_kathmandu": "5.1 km (to Nayapul)",
+        "description": "The Khopra Danda Trek is a less crowded alternative to the popular treks in the Annapurna region, offering panoramic views of the Annapurna and Dhaulagiri ranges. The trek passes through picturesque villages and rhododendron forests.",
+        "image": "https://omgnepal.com/wp-content/uploads/2020/08/Panchpokhari-Nepal-3.jpg"
+    }
+   
+]
