@@ -1,18 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; 
+import axios from 'axios';
 
 const PopularDestination = () => {
     const [destinations, setDestinations] = useState([]);
+    const navigate = useNavigate(); 
+    const scrollContainerRef = useRef(null);
 
     useEffect(() => {
-        fetch('/Json/Destination.json')
-            .then(response => response.json())
-            .then(data => setDestinations(data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+        fetchDestinations();
+      }, []);
     
-    const scrollContainerRef = useRef(null);
+      const fetchDestinations = async () => {
+        try {
+          const response = await axios.get("http://localhost:4000/api/destination");
+          setDestinations(response.data);
+        } catch (error) {
+          console.error("Error fetching destination:", error);
+        }
+      };
 
     const scrollLeft = () => {
         if (scrollContainerRef.current) {
@@ -25,6 +33,8 @@ const PopularDestination = () => {
             scrollContainerRef.current.scrollBy({ left: 800, behavior: 'smooth' });
         }
     };
+
+
 
     return (
         <section className="py-8 shadow-lg">
@@ -46,22 +56,24 @@ const PopularDestination = () => {
                     <div className="flex space-x-4">
                         {destinations.map(destination => (
                             <motion.div
-                                key={destination.name}
+                                key={destination.id}  
                                 className="bg-white p-4 rounded-lg shadow-md min-w-[300px] flex-shrink-0"
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 <img
-                                    src={destination.image}
-                                    alt={destination.name}
-                                    className="w-full h-48 object-cover rounded-t-lg"
+                                     src={`/uploads/${destination.profileImage}`}
+                                     alt={destination.name}
+                                     onClick={() => navigate(`/destinations/${destination._id}`)} 
+                                     className="w-full h-40 object-cover rounded-sm"
                                 />
                                 <h3 className="text-lg font-semibold mt-2 text-black text-center">
                                     {destination.name}
                                 </h3>
                                 <p className="text-gray-700 text-center">
-                                    {destination.distance_from_kathmandu}
+                                {` ${destination.location.city} ${destination.location.country} `}
                                 </p>
+                                
                             </motion.div>
                         ))}
                     </div>

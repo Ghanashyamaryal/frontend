@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Header from './Header';
 import Header1 from './Header1';
 import { useLocation } from 'react-router-dom';
@@ -14,5 +13,4 @@ const HeaderFinal = () => {
         </div>
     );
 }
-
 export default HeaderFinal;

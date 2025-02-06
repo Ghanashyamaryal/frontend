@@ -1,16 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const RecommendedHotels = () => {
     const [Hotels, setHotels] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('/Json/Hotels.json')
-            .then(response => response.json())
-            .then(data => setHotels(data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+        fetchHotels();
+      }, []);
+    
+      const fetchHotels = async () => {
+        try {
+          const response = await axios.get("http://localhost:4000/api/hotel");
+          setHotels(response.data);
+        } catch (error) {
+          console.error("Error fetching hotels:", error);
+        }
+      };
 
     const scrollContainerRef = useRef(null);
 
@@ -52,15 +61,16 @@ const RecommendedHotels = () => {
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 <img
-                                    src={hotel.image}
+                                    src={`/uploads/${hotel.profileImage}`}
                                     alt={hotel.name}
-                                    className="w-full h-48 object-cover rounded-t-lg"
+                                    onClick={() => navigate(`/hotels/${hotel._id}`)} 
+                                    className="w-full h-40 object-cover rounded-sm"
                                 />
                                 <h3 className="text-lg font-semibold mt-2 text-black text-center">
                                     {hotel.name}
                                 </h3>
                                 <p className="text-gray-700 text-center">
-                                    {hotel.address}
+                                    {`${hotel.address.street} ${hotel.address.city} ${hotel.address.country}`}
                                 </p>
                                 <p className="text-gray-700 font-bold text-center">
                                    Rating: {hotel.rating}

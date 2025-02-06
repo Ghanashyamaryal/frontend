@@ -12,7 +12,7 @@ const FAQs = () => {
     },
     {
       question: "How can I contact customer support?",
-      answer: "You can contact our customer support team via email at support@etravelguide.com or call us at (123) 456-7890.",
+      answer: "You can contact our customer support team via email at sfg_travel@etravelguide.com or call us at 071-437018.",
     },
   ];
 

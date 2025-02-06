@@ -1,19 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PopularTrek = () => {
     const [Treks, setTreks] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('/Json/Trek.json')
-            .then(response => response.json())
-            .then(data => setTreks(data))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+        fetchTreks();
+      }, []);
+    
+      const fetchTreks = async () => {
+        try {
+          const response = await axios.get("http://localhost:4000/api/trek");
+          setTreks(response.data);
+        } catch (error) {
+          console.error("Error fetching treks:", error);
+        }
+      };
 
     const scrollContainerRef = useRef(null);
-
+    
     const scrollLeft = () => {
         if (scrollContainerRef.current) {
             scrollContainerRef.current.scrollBy({ left: -800, behavior: 'smooth' });
@@ -52,20 +61,18 @@ const PopularTrek = () => {
                                 transition={{ type: "spring", stiffness: 300 }}
                             >
                                 <img
-                                    src={trek.image}
+                                    src={`/uploads/${trek.profileImage}`}
                                     alt={trek.name}
-                                    className="w-full h-48 object-cover rounded-t-lg"
+                                    onClick={() => navigate(`/trek/${trek._id}`)} 
+                                    className="w-full h-40 object-cover rounded-sm"
                                 />
                                 <h3 className="text-lg font-semibold mt-2 text-black text-center">
                                     {trek.name}
                                 </h3>
-                                <p className="text-gray-700 text-center">
-                                    {trek.location}
+                                <p className="text-gray-700 text-center font-bold">
+                                    Duration {`${trek.duration.days} days ${trek.duration.nights} nights `}
                                     </p>
-                                <p className="text-gray-700 text-center"> 
-                                    <p className="text-black font-bold">Distance from Kathmandu: </p>{trek.distance_from_kathmandu}
-
-                                </p>
+                              
                             </motion.div>
                         ))}
                     </div>

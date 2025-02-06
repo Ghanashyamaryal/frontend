@@ -10,13 +10,13 @@ const CustomerSupport = () => {
           If you have any questions or need assistance, please reach out to our customer support team. We're available Monday to Friday, 9:00 AM to 6:00 PM.
         </p>
         <p className="text-gray-700 mb-2">
-          <strong>Email:</strong> support@etravelguide.com
+          <strong>Email:</strong> sfg_travel@gmail.com
         </p>
         <p className="text-gray-700 mb-2">
-          <strong>Phone:</strong> (123) 456-7890
+          <strong>Phone:</strong> 071-437018
         </p>
         <p className="text-gray-700">
-          <strong>Address:</strong> 123 Travel Road, Kathmandu, Nepal
+          <strong>Address:</strong> New Road, Kathmandu, Nepal
         </p>
       </div>
     </div>
