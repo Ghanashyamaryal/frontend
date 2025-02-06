@@ -1,43 +1,40 @@
+import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { lazy, Suspense } from "react";
-import { Provider } from "react-redux";
-import { RouterProvider, Navigate } from "react-router-dom";
-import { createBrowserRouter, Route, createRoutesFromElements } from "react-router-dom";
-import store from "./store/Store.js";
 import App from "./App.jsx";
-
 import "./index.css";
+import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
+import { RouterProvider, Navigate } from "react-router";
+import { Provider } from "react-redux";
+import store from "./store/Store.js";
+import Home from "./Component/Home/Home.jsx";
 
 
-const Home = lazy(() => import("./Component/Home/Home.jsx"));
-const Destination = lazy(() => import("./pages/userpages/Destination.jsx"));
-const DestinationDetails = lazy(() => import("./pages/userpages/DestinationDetails.jsx"));
-const Hotels = lazy(() => import("./pages/userpages/Hotels.jsx"));
-const HotelsDetails = lazy(() => import("./pages/userpages/HotelsDetails.jsx"));
-const Login = lazy(() => import("./pages/userpages/Login.jsx"));
-const Register = lazy(() => import("./pages/userpages/Register.jsx"));
-const PlanYourTrip = lazy(() => import("./pages/userpages/PlanyourTrip.jsx"));
-const NearbyAttraction = lazy(() => import("./pages/userpages/NearbyAttraction.jsx"));
-const Package = lazy(() => import("./pages/userpages/Package.jsx"));
-const PackageDetails = lazy(() => import("./pages/userpages/PackageDetails.jsx"));
-const Contact = lazy(() => import("./pages/userpages/Contact.jsx"));
-const FAQs = lazy(() => import("./Support/Faqs.jsx"));
-const CustomerSupport = lazy(() => import("./Support/CustomerSupport.jsx"));
-const TermsConditions = lazy(() => import("./Support/TermsandConditions.jsx"));
-const Trek = lazy(() => import("./pages/userpages/Trek.jsx"));
-const TrekDetails = lazy(() => import("./pages/userpages/TrekDetails.jsx"));
-const Festival = lazy(() => import("./pages/userpages/Festival.jsx"));
-const SearchResults = lazy(() => import("./pages/userpages/Searchresult.jsx"));
+const Destination = React.lazy(() => import("./pages/userpages/Destination.jsx"));
+const Hotels = React.lazy(() => import("./pages/userpages/Hotels.jsx"));
+const HotelsDetails = React.lazy(() => import("./pages/userpages/HotelsDetails.jsx"));
+const Login = React.lazy(() => import("./pages/userpages/Login.jsx"));
+const Register = React.lazy(() => import("./pages/userpages/Register.jsx"));
+const PlanYourTrip = React.lazy(() => import("./pages/userpages/PlanyourTrip.jsx"));
+const NearbyAttraction = React.lazy(() => import("./pages/userpages/NearbyAttraction.jsx"));
+const Package = React.lazy(() => import("./pages/userpages/Package.jsx"));
+const Contact = React.lazy(() => import("./pages/userpages/Contact.jsx"));
+const FAQs = React.lazy(() => import("./Support/Faqs.jsx"));
+const CustomerSupport = React.lazy(() => import("./Support/CustomerSupport.jsx"));
+const TermsConditions = React.lazy(() => import("./Support/TermsandConditions.jsx"));
+const Trek = React.lazy(() => import("./pages/userpages/Trek.jsx"));
+const TrekDetails = React.lazy(() => import("./pages/userpages/TrekDetails.jsx"));
+const Festival = React.lazy(() => import("./pages/userpages/Festival.jsx"));
+const PackageDetails = React.lazy(() => import("./pages/userpages/PackageDetails.jsx"));
+const SearchResults = React.lazy(() => import("./pages/userpages/Searchresult.jsx"));
+const DestinationDetails = React.lazy(() => import("./pages/userpages/DestinationDetails.jsx"));
 
-
-const AdminDashboard = lazy(() => import("./pages/adminpages/Dashboard.jsx"));
-const HotelAdmin = lazy(() => import("./pages/adminpages/Hotels.jsx"));
-const DestinationAdmin = lazy(() => import("./pages/adminpages/Destinations.jsx"));
-const FestivalAdmin = lazy(() => import("./pages/adminpages/Festival.jsx"));
-const PackageAdmin = lazy(() => import("./pages/adminpages/Packages.jsx"));
-const PlanYourTripAdmin = lazy(() => import("./pages/adminpages/Planyourtrip.jsx"));
-const TrekAdmin = lazy(() => import("./pages/adminpages/Treks.jsx"));
-
+const AdminDashboard = React.lazy(() => import("./pages/adminpages/Dashboard.jsx"));
+const HotelAdmin = React.lazy(() => import("./pages/adminpages/Hotels.jsx"));
+const DestinationAdmin = React.lazy(() => import("./pages/adminpages/Destinations.jsx"));
+const FestivalAdmin = React.lazy(() => import("./pages/adminpages/Festival.jsx"));
+const PackageAdmin = React.lazy(() => import("./pages/adminpages/Packages.jsx"));
+const PlanYourTripAdmin = React.lazy(() => import("./pages/adminpages/Planyourtrip.jsx"));
+const TrekAdmin = React.lazy(() => import("./pages/adminpages/Treks.jsx"));
 
 const PrivateRoute = ({ children, role }) => {
   const userRole = localStorage.getItem("role");
@@ -50,66 +47,70 @@ const PrivateRoute = ({ children, role }) => {
   return children;
 };
 
+const withSuspense = (Component) => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Home />} />
-      <Route path="hotels" element={<Hotels />} />
-      <Route path="hotels/:hotelId" element={<HotelsDetails />} />
-      <Route path="destinations" element={<Destination />} />
-      <Route path="destinations/:destinationId" element={<DestinationDetails />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="planyourtrip" element={<PlanYourTrip />} />
-      <Route path="nearbyattraction" element={<NearbyAttraction />} />
-      <Route path="search" element={<SearchResults />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="packages" element={<Package />} />
-      <Route path="packages/:packageId" element={<PackageDetails />} />
-      <Route path="faqs" element={<FAQs />} />
-      <Route path="termsandconditions" element={<TermsConditions />} />
-      <Route path="customerSupport" element={<CustomerSupport />} />
-      <Route path="trek" element={<Trek />} />
-      <Route path="trek/:trekId" element={<TrekDetails />} />
-      <Route path="festivalsandevents" element={<Festival />} />
 
- 
+      <Route path="/" element={<Home />} />
+
+      <Route path="/hotels" element={withSuspense(Hotels)} />
+      <Route path="/hotels/:hotelId" element={withSuspense(HotelsDetails)} />
+      <Route path="/destinations" element={withSuspense(Destination)} />
+      <Route path="/destinations/:destinationId" element={withSuspense(DestinationDetails)} />
+      <Route path="/login" element={withSuspense(Login)} />
+      <Route path="/register" element={withSuspense(Register)} />
+      <Route path="/planyourtrip" element={withSuspense(PlanYourTrip)} />
+      <Route path="/nearbyattraction" element={withSuspense(NearbyAttraction)} />
+      <Route path="/search" element={withSuspense(SearchResults)} />
+      <Route path="/contact" element={withSuspense(Contact)} />
+      <Route path="/packages" element={withSuspense(Package)} />
+      <Route path="/packages/:packageId" element={withSuspense(PackageDetails)} />
+      <Route path="/faqs" element={withSuspense(FAQs)} />
+      <Route path="/TermsandCondition" element={withSuspense(TermsConditions)} />
+      <Route path="/customerSupport" element={withSuspense(CustomerSupport)} />
+      <Route path="/trek" element={withSuspense(Trek)} />
+      <Route path="/trek/:trekId" element={withSuspense(TrekDetails)} />
+      <Route path="/festivalsandevents" element={withSuspense(Festival)} />
+
       <Route
-        path="user"
+        path="/user"
         element={
           <PrivateRoute role="user">
-            <div>User Dashboard Placeholder</div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <div>User Dashboard Placeholder</div>
+            </Suspense>
           </PrivateRoute>
         }
       />
 
-    
       <Route
-        path="admin"
+        path="/admin"
         element={
           <PrivateRoute role="admin">
-            <Suspense fallback={<div>Loading Admin...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
               <AdminDashboard />
             </Suspense>
           </PrivateRoute>
         }
-      >
-        <Route path="hotels" element={<HotelAdmin />} />
-        <Route path="destinations" element={<DestinationAdmin />} />
-        <Route path="packages" element={<PackageAdmin />} />
-        <Route path="planyourtrip" element={<PlanYourTripAdmin />} />
-        <Route path="festivals" element={<FestivalAdmin />} />
-        <Route path="treks" element={<TrekAdmin />} />
-      </Route>
+      />
+      <Route path="/admin/hotels" element={withSuspense(HotelAdmin)} />
+      <Route path="/admin/destinations" element={withSuspense(DestinationAdmin)} />
+      <Route path="/admin/packages" element={withSuspense(PackageAdmin)} />
+      <Route path="/admin/planyourtrip" element={withSuspense(PlanYourTripAdmin)} />
+      <Route path="/admin/festivals" element={withSuspense(FestivalAdmin)} />
+      <Route path="/admin/treks" element={withSuspense(TrekAdmin)} />
     </Route>
   )
 );
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <Suspense fallback={<div>Loading...</div>}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <RouterProvider router={router} />
   </Provider>
 );
