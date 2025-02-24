@@ -32,7 +32,7 @@ const DestinationAdmin = () => {
   const fetchDestinations = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4000/api/destination");
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL}/api/destination`);
       setDestinations(response.data);
     } catch (error) {
       console.error("Error fetching destinations:", error);
@@ -85,12 +85,12 @@ const DestinationAdmin = () => {
     try {
       if (editingDestinationId) {
         await axios.put(
-          `http://localhost:4000/api/destination/${editingDestinationId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/destination/${editingDestinationId}`,
           formDataToSend
         );
         setSuccessMessage("Destination updated successfully.");
       } else {
-        await axios.post("http://localhost:4000/api/destination", formDataToSend);
+        await axios.post(`${ import.meta.env.VITE_BACKEND_URL}/api/destination`, formDataToSend);
         setSuccessMessage("Destination added successfully.");
       }
       fetchDestinations();
@@ -127,7 +127,7 @@ const DestinationAdmin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this destination?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/destination/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/destination/${id}`);
         fetchDestinations();
       } catch (error) {
         console.error("Error deleting destination:", error);

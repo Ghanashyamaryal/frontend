@@ -22,7 +22,7 @@ const FestivalAdmin = () => {
   const fetchFestivals = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4000/api/festival");
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL}/api/festival`);
       setFestivals(response.data);
     } catch (error) {
       console.error("Error fetching festivals:", error);
@@ -61,7 +61,7 @@ const FestivalAdmin = () => {
     try {
       if (editingFestivalId) {
         await axios.put(
-          `http://localhost:4000/api/festival/${editingFestivalId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/festival/${editingFestivalId}`,
           formDataToSend
         );
         setSuccessMessage("Festival updated successfully.");
@@ -93,7 +93,7 @@ const FestivalAdmin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this festival?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/festival/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/festival/${id}`);
         fetchFestivals();
       } catch (error) {
         console.error("Error deleting festival:", error);

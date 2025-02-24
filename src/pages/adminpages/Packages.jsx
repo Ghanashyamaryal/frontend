@@ -31,7 +31,7 @@ const PackageAdmin = () => {
   const fetchPackages = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4000/api/package");
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL } /api/package`);
       setPackages(response.data);
     } catch (error) {
       console.error("Error fetching packages:", error);
@@ -83,12 +83,12 @@ const PackageAdmin = () => {
     try {
       if (editingPackageId) {
         await axios.put(
-          `http://localhost:4000/api/package/${editingPackageId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/package/${editingPackageId}`,
           formDataToSend
         );
         setSuccessMessage("Package updated successfully.");
       } else {
-        await axios.post("http://localhost:4000/api/package", formDataToSend);
+        await axios.post(`${ import.meta.env.VITE_BACKEND_URL}api/package`, formDataToSend);
         setSuccessMessage("Package added successfully.");
       }
       fetchPackages();
@@ -124,7 +124,7 @@ const PackageAdmin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this package?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/package/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/package/${id}`);
         fetchPackages();
       } catch (error) {
         console.error("Error deleting package:", error);

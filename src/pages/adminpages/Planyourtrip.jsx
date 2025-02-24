@@ -25,7 +25,7 @@ const PlanYourTrip = () => {
 
     if (!token) {
       setShowPopup(true);
-      setTimeout(() => navigate("/login"), 5000); // Redirect after 5 seconds
+      setTimeout(() => navigate("/login"), 5000); 
     }
   }, [navigate]);
 
@@ -46,7 +46,7 @@ const PlanYourTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/plantrip", formData);
+      await axios.post(`${ import.meta.env.VITE_BACKEND_URL}/api/plantrip`, formData);
       setSuccessMessage("Your trip has been planned successfully!");
       setFormData({
         name: "",
@@ -69,7 +69,7 @@ const PlanYourTrip = () => {
         ...formData,
         message: `Hey! Check out this trip plan:\n\nDestination: ${formData.destination}\nDates: ${formData.travelDates.startDate} to ${formData.travelDates.endDate}\nBudget: ${formData.budget}\nPreferences: ${formData.preferences}`,
       };
-      await axios.post("http://localhost:4000/api/sharetrip", shareData);
+      await axios.post(`${ import.meta.env.VITE_BACKEND_URL }api/sharetrip`, shareData);
       setSuccessMessage("Trip details shared successfully!");
     } catch (error) {
       console.error("Error sharing trip:", error);

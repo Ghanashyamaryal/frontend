@@ -28,7 +28,7 @@ const TrekAdmin = () => {
   const fetchTreks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4000/api/trek");
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL } /api/trek`);
       setTreks(response.data);
     } catch (error) {
       console.error("Error fetching treks:", error);
@@ -87,7 +87,7 @@ const TrekAdmin = () => {
         );
         setSuccessMessage("Trek updated successfully.");
       } else {
-        await axios.post("http://localhost:4000/api/trek", formDataToSend);
+        await axios.post(`${ import.meta.env.VITE_BACKEND_URL } /api/trek`, formDataToSend);
         setSuccessMessage("Trek added successfully.");
       }
       fetchTreks();
@@ -123,7 +123,7 @@ const TrekAdmin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this trek?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/trek/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/trek/${id}`);
         fetchTreks();
       } catch (error) {
         console.error("Error deleting trek:", error);

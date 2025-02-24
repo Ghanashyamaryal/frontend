@@ -34,7 +34,7 @@ const HotelAdmin = () => {
   const fetchHotels = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4000/api/hotel");
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL}/api/hotel`);
       setHotels(response.data);
     } catch (error) {
       console.error("Error fetching hotels:", error);
@@ -50,7 +50,7 @@ const HotelAdmin = () => {
     if (name === "profileImage") {
       const file = files[0];
       const allowedTypes = ["image/jpeg", "image/png"];
-      const maxSize = 5 * 1024 * 1024; // 5MB
+      const maxSize = 5 * 1024 * 1024; 
 
       if (file && !allowedTypes.includes(file.type)) {
         setErrorMessage("Only JPG and PNG images are allowed.");
@@ -108,12 +108,12 @@ const HotelAdmin = () => {
     try {
       if (editingHotelId) {
         await axios.put(
-          `http://localhost:4000/api/hotel/${editingHotelId}`,
+          `${import.meta.env.VITE_BACKEND_URL}/api/hotel/${editingHotelId}`,
           formDataToSend
         );
         setSuccessMessage("Hotel updated successfully.");
       } else {
-        await axios.post("http://localhost:4000/api/hotel", formDataToSend);
+        await axios.post(`${ import.meta.env.VITE_BACKEND_URL}/api/hotel`, formDataToSend);
         setSuccessMessage("Hotel added successfully.");
       }
       fetchHotels();
@@ -155,7 +155,7 @@ const HotelAdmin = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this hotel?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/hotel/${id}`);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/hotel/${id}`);
         fetchHotels();
       } catch (error) {
         console.error("Error deleting hotel:", error);
