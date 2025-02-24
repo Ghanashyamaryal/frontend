@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { login, logout } from "../../store/Slice";
 import Search from "../../pages/userpages/Search";
 import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import { FaPhoneAlt, FaRegUser } from "react-icons/fa";
 
 const Header1 = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const dispatch = useDispatch();
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const [token, setToken] = useState("")
+    const [username, setusername] = useState("")
+    const navigate = useNavigate();
 
-    console.log("Is logged in:", isLoggedIn);
+
+    useEffect(() => {
+        const data = localStorage.getItem("token")
+        const userdata = localStorage.getItem("username")
+        setToken(data)
+        setusername(userdata)
+    })
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
     const handleLoginLogout = () => {
-        if (isLoggedIn) {
-            dispatch(logout()); 
-        } else {
-            dispatch(login()); 
+        if (token) {
+            dispatch(logout());
+            localStorage.removeItem("username");
+            localStorage.removeItem("token");
+            navigate("/login");
         }
     };
 
@@ -33,8 +41,8 @@ const Header1 = () => {
                 </div>
 
                 <div className="md:hidden">
-                    <button 
-                        onClick={toggleMenu} 
+                    <button
+                        onClick={toggleMenu}
                         aria-label="Toggle menu"
                         className="text-white p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded"
                     >
@@ -53,25 +61,25 @@ const Header1 = () => {
 
                 <div className="hidden md:flex space-x-4 items-center">
                     <div className="relative">
-                    <Search />
+                        <Search />
                     </div>
 
-                    {isLoggedIn ? (
-                        <button 
-                            onClick={handleLoginLogout} 
-                            className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200"
-                        >
-                            Logout
-                        </button>
+                    {token ? (
+                        <div className="flex items-center auth-links text-white">
+                            <div className='flex items-center flex-col'>
+                                <FaRegUser className='h-7 w-7' />
+                                <span className="uppercase">
+                                    {username.split(" ")[0].length > 10 ? `${username.split(" ")[0].slice(0, 10) }...` : username.split(" ")[0]}
+                                </span>
+
+                            </div>
+                            <button className="ml-4" onClick={handleLoginLogout}>Logout</button>
+                        </div>
                     ) : (
-                        <>
-                            <Link to="/login" className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200">
-                                Login
-                            </Link>
-                            <Link to="/register" className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200">
-                                Register
-                            </Link>
-                        </>
+                        <div className="auth-links text-white">
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </div>
                     )}
                 </div>
             </div>
@@ -85,9 +93,9 @@ const Header1 = () => {
                     <Link to="/nearbyattraction" className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200">Nearby Attraction</Link>
                     <Link to="/packages" className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200">Packages</Link>
 
-                    {isLoggedIn ? (
-                        <button 
-                            onClick={handleLoginLogout} 
+                    {token ? (
+                        <button
+                            onClick={handleLoginLogout}
                             className="text-white hover:bg-gray-800 rounded-md px-3 py-2 transition duration-200"
                         >
                             Logout

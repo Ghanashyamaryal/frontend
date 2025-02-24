@@ -14,7 +14,7 @@ const PopularTrek = () => {
     
       const fetchTreks = async () => {
         try {
-          const response = await axios.get("http://localhost:4000/api/trek");
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/trek`);
           setTreks(response.data);
         } catch (error) {
           console.error("Error fetching treks:", error);

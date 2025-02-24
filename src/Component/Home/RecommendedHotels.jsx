@@ -14,7 +14,7 @@ const RecommendedHotels = () => {
     
       const fetchHotels = async () => {
         try {
-          const response = await axios.get("http://localhost:4000/api/hotel");
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hotel`);
           setHotels(response.data);
         } catch (error) {
           console.error("Error fetching hotels:", error);

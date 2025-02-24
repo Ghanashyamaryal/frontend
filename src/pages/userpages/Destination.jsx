@@ -19,9 +19,7 @@ const Destination = ({ data }) => {
 
   const fetchDestinations = async () => {
     try {
-      console.alert(import.meta.env.VITE_BACKEND_URL)
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/destination`);
-
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL}/api/destination`)
       setDestinationList(response.data);
     } catch (error) {
       console.error("Error fetching destination:", error);

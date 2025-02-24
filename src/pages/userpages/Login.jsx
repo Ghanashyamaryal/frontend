@@ -23,6 +23,7 @@ function Login() {
             const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData);
             console.log(data);
             localStorage.setItem("token", data.token);
+            localStorage.setItem("username", data.username);
             localStorage.setItem("role", data.role);
             dispatch(login());
 

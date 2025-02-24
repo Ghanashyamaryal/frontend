@@ -15,7 +15,7 @@ const PopularDestination = () => {
     
       const fetchDestinations = async () => {
         try {
-          const response = await axios.get("http://localhost:4000/api/destination");
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/destination`);
           setDestinations(response.data);
         } catch (error) {
           console.error("Error fetching destination:", error);
