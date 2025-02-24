@@ -25,7 +25,7 @@ const PlanYourTrip = () => {
 
     if (!token) {
       setShowPopup(true);
-      setTimeout(() => navigate("/login"), 5000); 
+      setTimeout(() => navigate("/login"), 5000);
     }
   }, [navigate]);
 
@@ -46,7 +46,7 @@ const PlanYourTrip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/plantrip", formData);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/plantrip`, formData);
       setSuccessMessage("Your trip has been planned successfully!");
       setFormData({
         name: "",
@@ -69,7 +69,7 @@ const PlanYourTrip = () => {
         ...formData,
         message: `Hey! Check out this trip plan:\n\nDestination: ${formData.destination}\nDates: ${formData.travelDates.startDate} to ${formData.travelDates.endDate}\nBudget: ${formData.budget}\nPreferences: ${formData.preferences}`,
       };
-      await axios.post("http://localhost:4000/api/sharetrip", shareData);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL} /api/sharetrip`, shareData);
       setSuccessMessage("Trip details shared successfully!");
     } catch (error) {
       console.error("Error sharing trip:", error);
@@ -92,7 +92,7 @@ const PlanYourTrip = () => {
           <h2 className="text-2xl font-bold mb-4">You must be logged in to plan your trip</h2>
           <p className="text-gray-700 mb-4">Redirecting to login page in 5 seconds...</p>
           <button
-            onClick={()=>{navigate("/login")}}
+            onClick={() => { navigate("/login") }}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
           >
             Go to Login

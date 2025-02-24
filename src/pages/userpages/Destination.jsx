@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Destination = ({ data }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [destinationList, setDestinationList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [destinationsPerPage] = useState(6);
@@ -12,14 +12,16 @@ const Destination = ({ data }) => {
   useEffect(() => {
     fetchDestinations();
   }, []);
-  
+
   useEffect(() => {
     fetchDestinations();
   }, [data]);
 
   const fetchDestinations = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/destination");
+      console.alert(import.meta.env.VITE_BACKEND_URL)
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/destination`);
+
       setDestinationList(response.data);
     } catch (error) {
       console.error("Error fetching destination:", error);
@@ -77,58 +79,58 @@ const Destination = ({ data }) => {
         </select>
       </div>
 
-     <div  >
-     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"  >
-        {currentDestinations.map((destination) => (
-          <li
-          onClick={() => navigate(`/destinations/${destination._id}`)}
-            key={destination.name}
-            className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl"
-          >
-            <div className="relative">
-              <img
-                 src={`/uploads/${destination.profileImage}`}
-                alt={destination.name}
-                className="w-full h-56 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
-              <div className="absolute bottom-4 left-4">
-                <h2 className="text-2xl font-bold text-white">
-                  {destination.name}
-                </h2>
-                
+      <div  >
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"  >
+          {currentDestinations.map((destination) => (
+            <li
+              onClick={() => navigate(`/destinations/${destination._id}`)}
+              key={destination.name}
+              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl"
+            >
+              <div className="relative">
+                <img
+                  src={`/uploads/${destination.profileImage}`}
+                  alt={destination.name}
+                  className="w-full h-56 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                <div className="absolute bottom-4 left-4">
+                  <h2 className="text-2xl font-bold text-white">
+                    {destination.name}
+                  </h2>
+
+                </div>
               </div>
-            </div>
-            <div className="p-3">
-            <h4 className="text-2xl font-bold text-black py-1">
-               Location : {` ${destination.location.city} ${destination.location.country} `}
+              <div className="p-3">
+                <h4 className="text-2xl font-bold text-black py-1">
+                  Location : {` ${destination.location.city} ${destination.location.country} `}
                 </h4>
-               
-              <p className="text-gray-600 mb-4">
-                Best Time to Visit:{" "}
-                <span  className="text-gray-800 text-xs bg-gray-200 px-2 py-1 text-md rounded-md">
+
+                <p className="text-gray-600 mb-4">
+                  Best Time to Visit:{" "}
+                  <span className="text-gray-800 text-xs bg-gray-200 px-2 py-1 text-md rounded-md">
                     {destination.bestTimeToVisit?.length
-                  ? destination.bestTimeToVisit.join(", ")
-                  : "Not Available"}
-                </span>
-                
-              </p>
+                      ? destination.bestTimeToVisit.join(", ")
+                      : "Not Available"}
+                  </span>
 
-              <div className="flex items-center mb-2">
-                <span className="text-green-600 font-bold text-sm mr-2">
-                  Rating:
-                </span>
-                <span className="text-gray-600 text-sm">
-                  ({destination.averageRating} Ratings) - {destination.status || "Good"}
-                </span>
+                </p>
+
+                <div className="flex items-center mb-2">
+                  <span className="text-green-600 font-bold text-sm mr-2">
+                    Rating:
+                  </span>
+                  <span className="text-gray-600 text-sm">
+                    ({destination.averageRating} Ratings) - {destination.status || "Good"}
+                  </span>
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
 
-      
-     </div>
+
+      </div>
       <div className="mt-8 flex justify-center items-center space-x-2">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -141,11 +143,10 @@ const Destination = ({ data }) => {
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={`p-3 w-10 h-10 flex items-center justify-center rounded-lg shadow-md font-bold ${
-              currentPage === index + 1
+            className={`p-3 w-10 h-10 flex items-center justify-center rounded-lg shadow-md font-bold ${currentPage === index + 1
                 ? "bg-indigo-600 text-white"
                 : "bg-white text-indigo-600 hover:bg-indigo-100"
-            }`}
+              }`}
           >
             {index + 1}
           </button>

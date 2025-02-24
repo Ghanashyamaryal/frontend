@@ -14,7 +14,7 @@ const PackageDetails = () => {
 
     const fetchPackageDetails = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/package/${packageId}`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/package/${packageId}`);
             setPackageData(response.data);
         } catch (error) {
             console.error("Error fetching package details:", error);

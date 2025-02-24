@@ -26,7 +26,7 @@ const SearchResults = () => {
             setLoading(true);
 
             try {
-                const response = await axios.get(`http://localhost:4000/api/search?q=${query}`);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/search?q=${query}`);
                 console.log("API Response:", response.data.results);
 
                 const removeDuplicates = (array) => {
@@ -90,7 +90,7 @@ const SearchResults = () => {
                                 <div className="text-gray-500 text-sm mb-2">
                                     {`${hotel.address?.street || "Unknown Street"}, ${hotel.address?.country || "Unknown Country"}`}
                                 </div>
-                               
+
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <span className="text-2xl font-bold text-red-800">NPR: {`${hotel.priceRange?.min || "N/A"} - ${hotel.priceRange?.max || "N/A"}`}</span>
@@ -130,35 +130,35 @@ const SearchResults = () => {
                             </div>
                             <div className="w-2/3 p-4">
                                 <h2 className="text-xl text-gray-800 font-bold mb-1">{destination.name}</h2>
-                                
-                                <div className="mb-4">
-                            <h3 className="text-xl font-bold text-blue-600 mb-2">Best Time to Visit:</h3>
-                            <div className="flex items-center space-x-4">
-                                {destination.bestTimeToVisit?.map((time, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
-                                    >
-                                        {time}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
 
-                        <div className="mb-4">
-                            <h3 className="text-xl font-bold text-blue-600 mb-2">Activities:</h3>
-                            <div className="flex items-center space-x-4">
-                                {destination.activities?.map((activity, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
-                                    >
-                                        {activity}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                            
+                                <div className="mb-4">
+                                    <h3 className="text-xl font-bold text-blue-600 mb-2">Best Time to Visit:</h3>
+                                    <div className="flex items-center space-x-4">
+                                        {destination.bestTimeToVisit?.map((time, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
+                                            >
+                                                {time}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="mb-4">
+                                    <h3 className="text-xl font-bold text-blue-600 mb-2">Activities:</h3>
+                                    <div className="flex items-center space-x-4">
+                                        {destination.activities?.map((activity, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
+                                            >
+                                                {activity}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     ))}
@@ -188,14 +188,14 @@ const SearchResults = () => {
                                     {`${trek.bestSeasons || "Unknown Location"}`}
                                 </div>
                                 <div className="text-gray-700 text-sm mb-2">
-                                    Duration: {`${trek.duration.days} days - ${trek.duration.nights} nights`} 
+                                    Duration: {`${trek.duration.days} days - ${trek.duration.nights} nights`}
                                 </div>
                                 <div className="text-gray-500 text-sm mb-4">
                                     Difficulty: {trek.difficulty}
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <span className="text-2xl font-bold text-red-800">NPR: {`${trek.costPerPerson|| "N/A"}`}</span>
+                                        <span className="text-2xl font-bold text-red-800">NPR: {`${trek.costPerPerson || "N/A"}`}</span>
                                     </div>
 
                                     <div className="flex space-x-2">
@@ -236,17 +236,17 @@ const SearchResults = () => {
 
                             <div className="w-2/3 p-4">
                                 <h2 className="text-xl text-gray-800 font-bold mb-1">{packageItem.title}</h2>
-                                
+
                                 <div className="text-gray-700 text-sm mb-2">
-                                Duration: {`${packageItem.duration.days} days - ${packageItem.duration.nights} nights`} 
+                                    Duration: {`${packageItem.duration.days} days - ${packageItem.duration.nights} nights`}
                                 </div>
                                 <div className="text-gray-500 text-sm mb-2">
-                                Inclusions: {packageItem.inclusions?.join(", ") || "Details not available"}
+                                    Inclusions: {packageItem.inclusions?.join(", ") || "Details not available"}
                                 </div>
                                 <div className="text-gray-500 text-sm mb-2">
-                                Exclusions: {packageItem.exclusions?.join(", ") || "Details not available"}
+                                    Exclusions: {packageItem.exclusions?.join(", ") || "Details not available"}
                                 </div>
-                               
+
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <span className="text-2xl font-bold text-red-800">NPR: {`${packageItem.price || "N/A"}`}</span>

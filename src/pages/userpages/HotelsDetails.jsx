@@ -13,7 +13,7 @@ const HotelDetails = () => {
     const [hover, setHover] = useState(0);
     const [comment, setComment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [loading, setLoading] = useState(true); 
+    const [loading, setLoading] = useState(true);
     const amenities = ["Free_Wifi", "Geyser", "Card_payment", "CCTV", "Dining_area"];
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const HotelDetails = () => {
     const fetchHotelDetails = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:4000/api/hotel/${hotelId}`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hotel/${hotelId}`);
             setHotel(response.data.hotel);
             setRecommendedHotels(response.data.recommendedHotels);
         } catch (error) {
@@ -37,7 +37,7 @@ const HotelDetails = () => {
     const fetchReviews = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:4000/api/hotel/${hotelId}/reviews`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hotel/${hotelId}/reviews`);
             setReviews(response.data || []);
         } catch (error) {
             setErrorMessage("Error fetching reviews.");
@@ -52,7 +52,7 @@ const HotelDetails = () => {
             return;
         }
         try {
-            await axios.post(`http://localhost:4000/api/hotel/${hotelId}/reviews`, {
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/hotel/${hotelId}/reviews`, {
                 rating,
                 comment,
             });
@@ -191,39 +191,39 @@ const HotelDetails = () => {
             </div>
 
             <div className="mt-8">
-    <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Hotels</h3>
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {recommendedHotels.length > 0 ? (
-            recommendedHotels.map((recHotel) => (
-                <div
-                    key={recHotel._id}
-                    className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl w-full" // Full width of the grid cell
-                >
-                    <img
-                        src={`/uploads/${recHotel.profileImage}`}
-                        alt={recHotel.name}
-                        onClick={() => navigate(`/hotels/${recHotel._id}`)}
-                        className="w-full h-48 object-cover cursor-pointer"
-                    />
-                    <div className="p-4">
-                        <div className="flex justify-between items-center">
-                            <h4 className="text-xl font-semibold text-gray-800">{recHotel.name}</h4>
-                            <div className="text-yellow-600 flex items-center">
-                                {recHotel.averageRating} <FaStar className="mr-1" />
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Hotels</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    {recommendedHotels.length > 0 ? (
+                        recommendedHotels.map((recHotel) => (
+                            <div
+                                key={recHotel._id}
+                                className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl w-full" // Full width of the grid cell
+                            >
+                                <img
+                                    src={`/uploads/${recHotel.profileImage}`}
+                                    alt={recHotel.name}
+                                    onClick={() => navigate(`/hotels/${recHotel._id}`)}
+                                    className="w-full h-48 object-cover cursor-pointer"
+                                />
+                                <div className="p-4">
+                                    <div className="flex justify-between items-center">
+                                        <h4 className="text-xl font-semibold text-gray-800">{recHotel.name}</h4>
+                                        <div className="text-yellow-600 flex items-center">
+                                            {recHotel.averageRating} <FaStar className="mr-1" />
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600 text-sm">{`${recHotel.address.city}, ${recHotel.address.state}, ${recHotel.address.country}`}</p>
+                                    <div className="text-red-800 font-semibold text-lg">
+                                        Price: {`NPR ${recHotel.priceRange.min} - ${recHotel.priceRange.max}`}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <p className="text-gray-600 text-sm">{`${recHotel.address.city}, ${recHotel.address.state}, ${recHotel.address.country}`}</p>
-                        <div className="text-red-800 font-semibold text-lg">
-                            Price: {`NPR ${recHotel.priceRange.min} - ${recHotel.priceRange.max}`}
-                        </div>
-                    </div>
+                        ))
+                    ) : (
+                        <p className="text-gray-600">No recommendations available.</p>
+                    )}
                 </div>
-            ))
-        ) : (
-            <p className="text-gray-600">No recommendations available.</p>
-        )}
-    </div>
-</div>
+            </div>
 
         </div>
     );

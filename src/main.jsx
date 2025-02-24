@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import store from "./store/Store.js";
 import Home from "./Component/Home/Home.jsx";
 
-
 const Destination = React.lazy(() => import("./pages/userpages/Destination.jsx"));
 const Hotels = React.lazy(() => import("./pages/userpages/Hotels.jsx"));
 const HotelsDetails = React.lazy(() => import("./pages/userpages/HotelsDetails.jsx"));
@@ -27,7 +26,6 @@ const Festival = React.lazy(() => import("./pages/userpages/Festival.jsx"));
 const PackageDetails = React.lazy(() => import("./pages/userpages/PackageDetails.jsx"));
 const SearchResults = React.lazy(() => import("./pages/userpages/Searchresult.jsx"));
 const DestinationDetails = React.lazy(() => import("./pages/userpages/DestinationDetails.jsx"));
-
 const AdminDashboard = React.lazy(() => import("./pages/adminpages/Dashboard.jsx"));
 const HotelAdmin = React.lazy(() => import("./pages/adminpages/Hotels.jsx"));
 const DestinationAdmin = React.lazy(() => import("./pages/adminpages/Destinations.jsx"));
@@ -56,9 +54,7 @@ const withSuspense = (Component) => (
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-
       <Route path="/" element={<Home />} />
-
       <Route path="/hotels" element={withSuspense(Hotels)} />
       <Route path="/hotels/:hotelId" element={withSuspense(HotelsDetails)} />
       <Route path="/destinations" element={withSuspense(Destination)} />
@@ -77,7 +73,6 @@ const router = createBrowserRouter(
       <Route path="/trek" element={withSuspense(Trek)} />
       <Route path="/trek/:trekId" element={withSuspense(TrekDetails)} />
       <Route path="/festivalsandevents" element={withSuspense(Festival)} />
-
       <Route
         path="/user"
         element={
@@ -108,7 +103,6 @@ const router = createBrowserRouter(
     </Route>
   )
 );
-
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <RouterProvider router={router} />

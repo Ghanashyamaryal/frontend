@@ -15,9 +15,9 @@ const TrekDetails = () => {
 
     const fetchTrekDetails = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/trek/${trekId}`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/trek/${trekId}`);
             setTrek(response.data);
-            fetchRecommendedTreks(response.data); 
+            fetchRecommendedTreks(response.data);
         } catch (error) {
             console.error("Error fetching trek details:", error);
             setErrorMessage("Error fetching trek details. Please try again later.");
@@ -26,7 +26,7 @@ const TrekDetails = () => {
 
     const fetchRecommendedTreks = async (currentTrek) => {
         try {
-            const response = await axios.get("http://localhost:4000/api/trek"); 
+            const response = await axios.get("http://localhost:4000/api/trek");
             const allTreks = response.data;
             const recommended = allTreks
                 .filter(
@@ -35,7 +35,7 @@ const TrekDetails = () => {
                         trek.difficulty === currentTrek.difficulty &&
                         trek._id !== currentTrek._id
                 )
-                .slice(0, 4); 
+                .slice(0, 4);
             setRecommendedTreks(recommended);
         } catch (error) {
             console.error("Error fetching recommended treks:", error);
@@ -135,7 +135,7 @@ const TrekDetails = () => {
                 </div>
             </div>
 
-            
+
             <div className="mt-8">
                 <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Treks</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -155,7 +155,7 @@ const TrekDetails = () => {
                                     <p className="text-gray-600">{recommendedTrek.destination?.name}</p>
                                     <button
                                         onClick={() => navigate(`/trek/${recommendedTrek._id}`)}
-                                         className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                                        className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
                                     >
                                         View Details
                                     </button>

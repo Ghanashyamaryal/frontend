@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Packages = ({data}) => {
+const Packages = ({ data }) => {
   const navigate = useNavigate();
   const [packages, setPackages] = useState([]);
   const [sortOption, setSortOption] = useState("");
@@ -17,7 +17,7 @@ const Packages = ({data}) => {
   }, [data]);
   const fetchPackages = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/package");
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/package`);
       setPackages(response.data);
     } catch (error) {
       console.error("Error fetching packages:", error);
@@ -116,11 +116,11 @@ const Packages = ({data}) => {
 
 
               <div className="text-sm text-black mb-2">
-              {"Inclusions:"}<span className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md mr-2">
-                   {pkg.inclusions.join(", ")}
+                {"Inclusions:"}<span className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md mr-2">
+                  {pkg.inclusions.join(", ")}
                 </span>
-               {" Exclusions : "} <span className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md">
-                   {pkg.exclusions.join(", ")}
+                {" Exclusions : "} <span className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md">
+                  {pkg.exclusions.join(", ")}
                 </span>
               </div>
 

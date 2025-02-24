@@ -39,7 +39,7 @@ const DestinationDetails = () => {
     const fetchReviews = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:4000/api/destination/${destinationId}/reviews`
+                `${import.meta.env.VITE_BACKEND_URL}/api/destination/${destinationId}/reviews`
             );
             setReviews(response.data || []);
         } catch (error) {
@@ -54,7 +54,7 @@ const DestinationDetails = () => {
         }
         try {
             await axios.post(
-                `http://localhost:4000/api/destination/${destinationId}/reviews`,
+                `${import.meta.env.VITE_BACKEND_URL}/api/destination/${destinationId}/reviews`,
                 { rating, comment }
             );
             setRating(0);
@@ -184,40 +184,40 @@ const DestinationDetails = () => {
                 </button>
             </div>
 
-           <div className="mt-8">
-    <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Destinations</h3>
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {recommendedDestinations.length > 0 ? (
-            recommendedDestinations.map((recDestination) => (
-                <div
-                    key={recDestination._id}
-                    className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl w-full"
-                >
-                    <img
-                        src={`/uploads/${recDestination.profileImage}`}
-                        alt={recDestination.name}
-                        onClick={() => navigate(`/destinations/${recDestination._id}`)}
-                        className="w-full h-48 object-cover cursor-pointer"
-                    />
-                    <div className="p-4">
-                        <div className="flex justify-between items-center">
-                            <h4 className="text-xl font-semibold text-gray-800">{recDestination.name}</h4>
-                            <div className="text-yellow-600 flex items-center">
-                                {recDestination.averageRating} <FaStar className="mr-1" />
+            <div className="mt-8">
+                <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Destinations</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    {recommendedDestinations.length > 0 ? (
+                        recommendedDestinations.map((recDestination) => (
+                            <div
+                                key={recDestination._id}
+                                className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl w-full"
+                            >
+                                <img
+                                    src={`/uploads/${recDestination.profileImage}`}
+                                    alt={recDestination.name}
+                                    onClick={() => navigate(`/destinations/${recDestination._id}`)}
+                                    className="w-full h-48 object-cover cursor-pointer"
+                                />
+                                <div className="p-4">
+                                    <div className="flex justify-between items-center">
+                                        <h4 className="text-xl font-semibold text-gray-800">{recDestination.name}</h4>
+                                        <div className="text-yellow-600 flex items-center">
+                                            {recDestination.averageRating} <FaStar className="mr-1" />
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600 text-sm">{`${recDestination.location.city}, ${recDestination.location.country}`}</p>
+                                </div>
                             </div>
-                        </div>
-                        <p className="text-gray-600 text-sm">{`${recDestination.location.city}, ${recDestination.location.country}`}</p>
-                    </div>
+                        ))
+                    ) : (
+                        <p className="text-gray-600">No recommendations available.</p>
+                    )}
                 </div>
-            ))
-        ) : (
-            <p className="text-gray-600">No recommendations available.</p>
-        )}
-    </div>
-</div>
-
             </div>
-            );
+
+        </div>
+    );
 };
 
-            export default DestinationDetails;
+export default DestinationDetails;

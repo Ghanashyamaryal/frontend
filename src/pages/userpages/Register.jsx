@@ -16,9 +16,8 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const API_URL = "http://localhost:4000";
         try {
-            const response = await axios.post(`${API_URL}/api/user/register`, formData);
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/register`, formData);
             console.log(response.data);
 
             setformData({ username: "", email: "", password: "" });
@@ -40,7 +39,7 @@ function Register() {
                         </div>
                     )}
                     <form onSubmit={handleSubmit}>
-                      
+
                         <div className="mb-4">
                             <label htmlFor="username" className="block text-sm mb-2 text-white">Username</label>
                             <div className="relative">
@@ -59,7 +58,7 @@ function Register() {
                             </div>
                         </div>
 
-                    
+
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-sm mb-2 text-white">Email</label>
                             <div className="relative">
@@ -78,7 +77,7 @@ function Register() {
                             </div>
                         </div>
 
-                        
+
                         <div className="mb-4">
                             <label htmlFor="password" className="block text-sm mb-2 text-white">Password</label>
                             <div className="relative">

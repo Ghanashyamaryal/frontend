@@ -7,7 +7,7 @@ const Trek = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [treksPerPage] = useState(6);
   const [sortOption, setSortOption] = useState("difficulty");
-  const navigate  = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchTreks();
@@ -15,7 +15,7 @@ const Trek = () => {
 
   const fetchTreks = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/trek");
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/trek`);
       setTrekList(response.data);
     } catch (error) {
       console.error("Error fetching trek:", error);
@@ -73,7 +73,7 @@ const Trek = () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {currentTreks.map((trek) => (
           <li
-          onClick={()=>{navigate(`/trek/${trek._id}`)}}
+            onClick={() => { navigate(`/trek/${trek._id}`) }}
             key={trek.name}
             className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl"
           >
@@ -93,13 +93,13 @@ const Trek = () => {
                 Difficulty: {trek.difficulty}
               </h4>
               <p className="text-gray-600 mb-4">
-              Duration: <span className=" bg-gray-200 font-bold"> {trek.duration.days} days, {trek.duration.nights} nights</span> 
+                Duration: <span className=" bg-gray-200 font-bold"> {trek.duration.days} days, {trek.duration.nights} nights</span>
               </p>
 
               <div className="flex items-center mb-2">
                 <span className="text-red-600 font-bold text-lg mr-2">Cost Per Person :</span>
                 <span className="text-gray-800 text-lg" >
-                   {`$ ${trek.costPerPerson}`}
+                  {`$ ${trek.costPerPerson}`}
                 </span>
               </div>
 
@@ -128,11 +128,10 @@ const Trek = () => {
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
-            className={`p-3 w-10 h-10 flex items-center justify-center rounded-lg shadow-md font-bold ${
-              currentPage === index + 1
+            className={`p-3 w-10 h-10 flex items-center justify-center rounded-lg shadow-md font-bold ${currentPage === index + 1
                 ? "bg-blue-600 text-white"
                 : "bg-white text-blue-600 hover:bg-teal-100"
-            }`}
+              }`}
           >
             {index + 1}
           </button>

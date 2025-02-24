@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Hotels = ({data}) => {
+const Hotels = ({ data }) => {
     const navigate = useNavigate();
     const [hotel, setHotels] = useState([]);
     const [sortOption, setSortOption] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const [searchQuery, setSearchQuery] = useState(""); 
-    const itemsPerPage = 7;  
+    const [searchQuery, setSearchQuery] = useState("");
+    const itemsPerPage = 7;
 
     const amenities = ["Free_Wifi", "Geyser", "Card_payment", "CCTV", "Dining_area"];
 
     useEffect(() => {
         fetchHotels();
     }, [searchQuery]);
-    
+
     useEffect(() => {
         fetchHotels();
     }, []);
@@ -26,7 +26,7 @@ const Hotels = ({data}) => {
 
     const fetchHotels = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/hotel?search=${searchQuery}`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/hotel?search=${searchQuery}`);
             setHotels(response.data);
             console.log(response.data);
         } catch (error) {
@@ -50,7 +50,7 @@ const Hotels = ({data}) => {
         setHotels(sortedHotels);
     };
 
-   
+
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentHotels = hotel.slice(indexOfFirstItem, indexOfLastItem);
@@ -128,7 +128,7 @@ const Hotels = ({data}) => {
                 ))}
             </div>
 
-          
+
             <div className="flex justify-center mt-6">
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button

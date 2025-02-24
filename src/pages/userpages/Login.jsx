@@ -20,11 +20,11 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post("http://localhost:4000/api/auth/login", formData);
+            const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData);
             console.log(data);
             localStorage.setItem("token", data.token);
             localStorage.setItem("role", data.role);
-            dispatch(login()); 
+            dispatch(login());
 
             setError("");
             navigate(data.role === "admin" ? "/admin" : "/");
