@@ -28,7 +28,7 @@ const TrekAdmin = () => {
   const fetchTreks = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL } /api/trek`);
+      const response = await axios.get(`${ import.meta.env.VITE_BACKEND_URL }/api/trek`);
       setTreks(response.data);
     } catch (error) {
       console.error("Error fetching treks:", error);
@@ -82,7 +82,7 @@ const TrekAdmin = () => {
     try {
       if (editingTrekId) {
         await axios.put(
-          `http://localhost:4000/api/trek/${editingTrekId}`,
+          `${ import.meta.env.VITE_BACKEND_URL }/api/trek/${editingTrekId}`,
           formDataToSend
         );
         setSuccessMessage("Trek updated successfully.");
