@@ -26,7 +26,7 @@ const TrekDetails = () => {
 
     const fetchRecommendedTreks = async (currentTrek) => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/trek/`);
+            const response = await axios.get("http://localhost:4000/api/trek");
             const allTreks = response.data;
             const recommended = allTreks
                 .filter(
@@ -136,7 +136,7 @@ const TrekDetails = () => {
             </div>
 
 
-            <div className="mt-8">
+            {/* <div className="mt-8">
                 <h3 className="text-2xl font-bold text-blue-600 mb-4">Recommended Treks</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {recommendedTreks.length > 0 ? (
@@ -166,7 +166,7 @@ const TrekDetails = () => {
                         <p className="text-gray-600">No recommendations available.</p>
                     )}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };
