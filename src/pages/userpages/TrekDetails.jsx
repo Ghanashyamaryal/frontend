@@ -26,7 +26,7 @@ const TrekDetails = () => {
 
     const fetchRecommendedTreks = async (currentTrek) => {
         try {
-            const response = await axios.get("http://localhost:4000/api/trek");
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/trek`);
             const allTreks = response.data;
             const recommended = allTreks
                 .filter(
