@@ -24,7 +24,7 @@ const DestinationDetails = () => {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://localhost:4000/api/destination/${destinationId}`
+                `${import.meta.env.VITE_BACKEND_URL}/api/destination/${destinationId}`
             );
             setDestination(response.data);
             setRecommendedDestinations(response.data.recommendations || []);
@@ -94,18 +94,18 @@ const DestinationDetails = () => {
 
                         <div className="mb-4">
                             <span className="text-xl font-bold text-blue-600 mb-2">Location: </span>
-                            <span className="text-gray-600">{`${destination.location?.city}, ${destination.location?.state}, ${destination.location?.country}`}</span>
+                            <span className="text-gray-600">{`${destination?.location?.city ?? " "}, ${destination?.location?.state ?? " "}, ${destination?.location?.country ?? ""}`}</span>
                         </div>
 
                         <div className="mb-4">
                             <span className="text-green-800 font-bold">Rating: </span>
-                            <span className="text-black font-bold">{destination.averageRating} / 5</span>
+                            <span className="text-black font-bold">{destination?.averageRating} / 5</span>
                         </div>
 
                         <div className="mb-4">
                             <h3 className="text-xl font-bold text-blue-600 mb-2">Best Time to Visit:</h3>
                             <div className="flex items-center space-x-4">
-                                {destination.bestTimeToVisit?.map((time, idx) => (
+                                {destination?.bestTimeToVisit?.map((time, idx) => (
                                     <span
                                         key={idx}
                                         className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
@@ -119,7 +119,7 @@ const DestinationDetails = () => {
                         <div className="mb-4">
                             <h3 className="text-xl font-bold text-blue-600 mb-2">Activities:</h3>
                             <div className="flex items-center space-x-4">
-                                {destination.activities?.map((activity, idx) => (
+                                {destination?.activities?.map((activity, idx) => (
                                     <span
                                         key={idx}
                                         className="text-gray-600 text-xs bg-gray-200 px-2 py-1 rounded-md"
@@ -134,27 +134,27 @@ const DestinationDetails = () => {
 
                 <div className="mt-6">
                     <h3 className="text-xl font-bold text-red-600 mb-2">Description</h3>
-                    <p className="text-gray-600">{destination.description}</p>
+                    <p className="text-gray-600">{destination?.description}</p>
                 </div>
             </div>
             <div className="mt-6">
                 <h3 className="text-xl font-bold text-blue-600">Reviews</h3>
                 <div>
-                    {reviews.length === 0 ? (
+                    {reviews?.length === 0 ? (
                         <p className="text-gray-600">No reviews yet.</p>
                     ) : (
-                        reviews.map((review, index) => (
+                        reviews?.map((review, index) => (
                             <div key={index} className="border p-3 mt-2">
                                 <p className="text-yellow-500 flex">
                                     {Array.from({ length: 5 }).map((_, i) => (
                                         <FaStar
                                             key={i}
-                                            className={i < review.rating ? "text-yellow-500" : "text-black"}
+                                            className={i < review?.rating ? "text-yellow-500" : "text-black"}
                                         />
                                     ))}{" "}
-                                    {review.rating} / 5
+                                    {review?.rating} / 5
                                 </p>
-                                <p className="text-gray-700">{review.comment}</p>
+                                <p className="text-gray-700">{review?.comment}</p>
                             </div>
                         ))
                     )}
@@ -203,10 +203,10 @@ const DestinationDetails = () => {
                                     <div className="flex justify-between items-center">
                                         <h4 className="text-xl font-semibold text-gray-800">{recDestination.name}</h4>
                                         <div className="text-yellow-600 flex items-center">
-                                            {recDestination.averageRating} <FaStar className="mr-1" />
+                                            {recDestination?.averageRating} <FaStar className="mr-1" />
                                         </div>
                                     </div>
-                                    <p className="text-gray-600 text-sm">{`${recDestination.location.city}, ${recDestination.location.country}`}</p>
+                                    <p className="text-gray-600 text-sm">{`${recDestination?.location?.city ?? ""}, ${recDestination?.location?.country ?? " "}`}</p>
                                 </div>
                             </div>
                         ))
